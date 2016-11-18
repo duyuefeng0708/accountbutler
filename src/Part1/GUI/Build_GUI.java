@@ -47,14 +47,15 @@ public class Build_GUI extends javax.swing.JFrame {
         lblweek = new javax.swing.JLabel();
         pother = new javax.swing.JPanel();
         pchart = new javax.swing.JPanel();
+        btLogout = new javax.swing.JButton();
         ptoday = new javax.swing.JLabel();
         btadd = new javax.swing.JButton();
         pthismonth = new javax.swing.JLabel();
         btCheckingAccount = new javax.swing.JButton();
         btInvestment = new javax.swing.JButton();
-        btLogout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         btCash.setText("Cash");
         btCash.addActionListener(new java.awt.event.ActionListener() {
@@ -114,15 +115,27 @@ public class Build_GUI extends javax.swing.JFrame {
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
+        btLogout.setText("Log out");
+        btLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLogoutActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pchartLayout = new javax.swing.GroupLayout(pchart);
         pchart.setLayout(pchartLayout);
         pchartLayout.setHorizontalGroup(
             pchartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pchartLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pchartLayout.setVerticalGroup(
             pchartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 235, Short.MAX_VALUE)
+            .addGroup(pchartLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(195, Short.MAX_VALUE))
         );
 
         ptoday.setText(" Today         I spend    $");
@@ -145,10 +158,10 @@ public class Build_GUI extends javax.swing.JFrame {
                 .addComponent(pchart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addComponent(pthismonth, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
-            .addGroup(potherLayout.createSequentialGroup()
-                .addGap(83, 83, 83)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, potherLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btadd, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(64, 64, 64))
         );
         potherLayout.setVerticalGroup(
             potherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,89 +190,79 @@ public class Build_GUI extends javax.swing.JFrame {
             }
         });
 
-        btLogout.setText("Log out");
-        btLogout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btLogoutActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btCash, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btSavings, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btCreditCard, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btCheckingAccount, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btInvestment, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 32, 32)
-                        .addComponent(ptime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                        .addComponent(pother, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btbudget, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(73, 73, 73))))
+                        .addGap(41, 41, 41))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btCheckingAccount, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btSavings, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btCash, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btCreditCard, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btInvestment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)))
+                .addComponent(ptime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(pother, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 69, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(pother, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
+                        .addGap(56, 56, 56)
                         .addComponent(ptime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btbudget, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btCash, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btSavings, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(13, 13, 13)
                         .addComponent(btCreditCard, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btCheckingAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btInvestment, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btInvestment, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCashActionPerformed
         String btName = btCash.getText();
-        AssetType.setAssetType(btName);
-        this.setVisible(false);
+        AssetType.setAssetType(btName);        
         Asset asset = new Asset();
+        this.setVisible(false);
         asset.setVisible(true);     
     }//GEN-LAST:event_btCashActionPerformed
 
     private void btaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btaddActionPerformed
+        AddDetails addDetails = new AddDetails();
         this.setVisible(false);
-        new AddDetails().setVisible(true);
+        addDetails.setVisible(true);
     }//GEN-LAST:event_btaddActionPerformed
 
     private void btSavingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSavingsActionPerformed
         String btName = btSavings.getText();
-        AssetType.setAssetType(btName);
-        this.setVisible(false);
+        AssetType.setAssetType(btName); 
         Asset asset = new Asset();
+        this.setVisible(false);
         asset.setVisible(true); 
     }//GEN-LAST:event_btSavingsActionPerformed
 
@@ -269,32 +272,32 @@ public class Build_GUI extends javax.swing.JFrame {
 
     private void btInvestmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInvestmentActionPerformed
         String btName = btInvestment.getText();
-        AssetType.setAssetType(btName);
-        this.setVisible(false);
+        AssetType.setAssetType(btName);       
         Asset asset = new Asset();
+        this.setVisible(false);
         asset.setVisible(true); 
     }//GEN-LAST:event_btInvestmentActionPerformed
 
     private void btCreditCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCreditCardActionPerformed
         String btName = btCreditCard.getText();
-        AssetType.setAssetType(btName);
-        this.setVisible(false);
+        AssetType.setAssetType(btName);        
         Asset asset = new Asset();
+        this.setVisible(false);
         asset.setVisible(true); 
     }//GEN-LAST:event_btCreditCardActionPerformed
 
     private void btCheckingAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCheckingAccountActionPerformed
         String btName = btCheckingAccount.getText();
-        AssetType.setAssetType(btName);
-        this.setVisible(false);
+        AssetType.setAssetType(btName);        
         Asset asset = new Asset();
+        this.setVisible(false);
         asset.setVisible(true); 
     }//GEN-LAST:event_btCheckingAccountActionPerformed
 
     private void btLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLogoutActionPerformed
-        UserName.setUserName(null);
-        this.setVisible(false);
+        UserName.setUserName(null);        
         Login login = new Login();
+        this.setVisible(false);
         login.setVisible(true);
     }//GEN-LAST:event_btLogoutActionPerformed
 

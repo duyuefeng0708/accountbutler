@@ -43,6 +43,7 @@ public class AddDetails extends javax.swing.JFrame {
         jButtonCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         radioexpense.setText("Expense");
 
@@ -119,7 +120,7 @@ public class AddDetails extends javax.swing.JFrame {
                                     .addComponent(jScrollPanelLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(47, 47, 47)
                                 .addComponent(jScrollPanelComment, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(23, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -167,6 +168,7 @@ public class AddDetails extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboassettypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboassettypeActionPerformed
@@ -182,8 +184,8 @@ public class AddDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
-        this.setVisible(false);
         Build_GUI mainframe = new Build_GUI();
+        this.setVisible(false);
         mainframe.setVisible(true);
     }//GEN-LAST:event_jButtonCancelActionPerformed
 
@@ -217,7 +219,9 @@ public class AddDetails extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddDetails().setVisible(true);
+                AddDetails addDetails = new AddDetails();
+                addDetails.setLocationRelativeTo(null);
+                addDetails.setVisible(true);
             }
         });
     }

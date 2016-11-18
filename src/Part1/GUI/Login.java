@@ -40,6 +40,7 @@ ResultSet rs = null;
         btLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         lblUserName.setText("Username");
 
@@ -109,20 +110,21 @@ ResultSet rs = null;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(186, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(206, 206, 206)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(181, 181, 181))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(86, 86, 86)
+                .addGap(90, 90, 90)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(96, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
@@ -130,8 +132,8 @@ ResultSet rs = null;
     }//GEN-LAST:event_txtUserNameActionPerformed
 
     private void btSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSignupActionPerformed
-        this.setVisible(false);
         Register register = new Register();
+        this.setVisible(false);
         register.setVisible(true);
     }//GEN-LAST:event_btSignupActionPerformed
 
@@ -145,9 +147,9 @@ ResultSet rs = null;
             rs = pst.executeQuery();
             if(rs.next()){
                 //JOptionPane.showMessageDialog(null, "Welcome!");
-                UserName.setUserName(txtUserName.getText());    
-                this.setVisible(false);
+                UserName.setUserName(txtUserName.getText());                    
                 Build_GUI mainframe = new Build_GUI();
+                this.setVisible(false);
                 mainframe.setVisible(true);
             }
             else{

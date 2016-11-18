@@ -48,6 +48,7 @@ public class Register extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(799, 429));
+        setResizable(false);
         setSize(new java.awt.Dimension(799, 429));
 
         lblUserName.setText("User name:");
@@ -133,17 +134,18 @@ public class Register extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(175, 175, 175)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(279, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(73, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
@@ -151,7 +153,10 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUserNameActionPerformed
 
     private void btRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegisterActionPerformed
-        if(txtPassword.getText()!=null && txtPasswordConfirmation.getText()!=null && txtPassword.getText().equals(txtPasswordConfirmation.getText())){
+        if(txtPassword.getText().equals("") || txtPasswordConfirmation.equals("")){
+            JOptionPane.showMessageDialog(null,"User name or password is empty!");
+        }
+        else if(!txtPassword.getText().equals("") && !txtPasswordConfirmation.getText().equals("") && txtPassword.getText().equals(txtPasswordConfirmation.getText())){
             conn = MySqlConnect.ConnectDB();
             String Sql = "Select * from [User] where UserName = ?";
             try{
@@ -167,9 +172,9 @@ public class Register extends javax.swing.JFrame {
                     int ret = stInsert.executeUpdate(SqlInsert);
                     if(ret==1){
                         JOptionPane.showMessageDialog(null, "New user registered!");
-                    }
-                    this.setVisible(false);
+                    }                   
                     Login login = new Login();
+                    this.setVisible(false);
                     login.setVisible(true);
                 }
             }catch(Exception e){
@@ -181,8 +186,8 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_btRegisterActionPerformed
 
     private void btBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBackActionPerformed
-        this.setVisible(false);
         Login login = new Login();
+        this.setVisible(false);
         login.setVisible(true);
     }//GEN-LAST:event_btBackActionPerformed
 
