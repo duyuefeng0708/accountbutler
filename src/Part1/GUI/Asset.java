@@ -365,7 +365,7 @@ ResultSet rs = null;
             try {
                 stDelete = conn.createStatement();            
             //JOptionPane.showMessageDialog(null, SqlUpdate);
-            int ret = stDelete.executeUpdate(SqlDelete);
+                int ret = stDelete.executeUpdate(SqlDelete);
             }
             catch (SQLException ex) {
                 Logger.getLogger(Asset.class.getName()).log(Level.SEVERE, null, ex);

@@ -130,7 +130,9 @@ ResultSet rs = null;
     }//GEN-LAST:event_txtUserNameActionPerformed
 
     private void btSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSignupActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        Register register = new Register();
+        register.setVisible(true);
     }//GEN-LAST:event_btSignupActionPerformed
 
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
