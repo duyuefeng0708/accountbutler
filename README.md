@@ -1,5 +1,5 @@
 github url:
-https://repository.genmymodel.com/duyuefeng0708/3343
+https://github.com/duyuefeng0708/accountbutler.git
 Please fork me and after editing send me a pull request.
 
 
