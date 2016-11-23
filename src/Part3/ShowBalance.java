@@ -19,7 +19,7 @@ public class ShowBalance {
 	private String[] names;
 	private String title;
 	private String targetMonth;
-	
+	/*
 	public ShowBalance(ArrayList<Assets> assets, String month){
 		this.values = new float[2];
 	    this.names = new String[2];
@@ -54,14 +54,14 @@ public class ShowBalance {
 				totalExpenseByMonth+=e.getAmount();				
 		}
 		return totalExpenseByMonth;
-	}
+	}*/
 	
 	public void showMonthlyBalanceChart(String[] argv) {
 	    JFrame f = new JFrame();
 	    f.setSize(400, 300);
-	    values[0] = getIncomeByMonth();
+	    //values[0] = getIncomeByMonth();
 	    names[0] = "Income";
-	    values[1] = getExpenseByMonth();
+	    //values[1] = getExpenseByMonth();
 	    names[1] = "Expense";
 	    f.getContentPane().add(new DrawBarChart(values, names, title));
 

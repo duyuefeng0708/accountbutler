@@ -27,7 +27,7 @@ public class Transfer {
     public void setToAssets(Assets assets){
         toAssets=assets;
     }
-    
+    /*
     public void setAmount(float amount){
         income.setAmount(amount);
         expense.setAmount(amount*-1);
@@ -36,7 +36,7 @@ public class Transfer {
     public void setAssetsType(Assets fromAssetsType,Assets toAssetsType){
         income.setAssetsType(toAssets);
         expense.setAssetsType(fromAssetsType);
-    }
+    }*/
     
     public void applyTransfer(){
         fromAssets.applyExchange(expense);

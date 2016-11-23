@@ -106,7 +106,7 @@ public class PeriodIncome {
         year=year;
     }
    }
-   
+   /*
    public void applyPeriodIncome(){// if system date equals to income date, create an new income
        int y,m,d;   
     Calendar cal=Calendar.getInstance();   
@@ -119,5 +119,5 @@ public class PeriodIncome {
         this.nextIncomeDate();
       
     }
-   }
+   }*/
 }

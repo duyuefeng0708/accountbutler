@@ -18,7 +18,7 @@ public class ShowExpenseByCategory {
 	private float[] values;
 //	private String title;
 	private String targetMonth;
-	
+	/*
 	public ShowExpenseByCategory(ArrayList<Assets> assets, String month){
 		this.values = new float[2];
 	    this.names = new String[2];
@@ -47,7 +47,7 @@ public class ShowExpenseByCategory {
 				totalExpenseByMonth+=e.getAmount();				
 		}
 		return totalExpenseByMonth;
-	}
+	}*/
 	
 	public void showMonthlyBalanceChart(String[] argv) {
 		
