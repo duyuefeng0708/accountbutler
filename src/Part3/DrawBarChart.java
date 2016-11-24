@@ -5,30 +5,24 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
-//import java.awt.event.WindowAdapter;
-//import java.awt.event.WindowEvent;
-//import java.awt.event.WindowListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
-//import javax.swing.JFrame;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class DrawBarChart extends JPanel {
-	
-  private static final long serialVersionUID = 1L;
-  private float[] values;
-  private String[] names;
-  private String title;
-  private String subtitle1;
-  private String subtitle2;
-  private String subtitle3;
+  private double[] values;
 
-  public DrawBarChart(float[] v, String[] n, String t) {
+  private String[] names;
+
+  private String title;
+
+  public DrawBarChart(double[] v, String[] n, String t) {
     names = n;
     values = v;
     title = t;
-    subtitle1 = names[0] +" "+ values[0];
-    subtitle2 = names[1] +" "+ values[1];
-    subtitle3 = "Balance " + (values[0]-values[1]);
   }
 
   public void paintComponent(Graphics g) {
@@ -59,10 +53,7 @@ public class DrawBarChart extends JPanel {
     int x = (clientWidth - titleWidth) / 2;
     g.setFont(titleFont);
     g.drawString(title, x, y);
-    g.drawString(subtitle1, 0, y);
-    g.drawString(subtitle2, 0, 2*y);
-    g.drawString(subtitle3, 0, 3*y);
-    
+
     int top = titleFontMetrics.getHeight();
     int bottom = labelFontMetrics.getHeight();
     if (maxValue == minValue)
@@ -81,16 +72,14 @@ public class DrawBarChart extends JPanel {
         valueY += (int) (maxValue * scale);
         height = -height;
       }
-      if(i==0)
-    	  g.setColor(Color.green);
-      else
-    	  g.setColor(Color.red);
+
+      g.setColor(Color.red);
       g.fillRect(valueX, valueY, barWidth - 2, height);
+      g.setColor(Color.black);
+      g.drawRect(valueX, valueY, barWidth - 2, height);
       int labelWidth = labelFontMetrics.stringWidth(names[i]);
       x = i * barWidth + (barWidth - labelWidth) / 2;
       g.drawString(names[i], x, y);
     }
   }
-
-  
 }

@@ -27,6 +27,8 @@ public class Build_GUI extends javax.swing.JFrame {
     private ArrayList<String> budget_types;
     private Currency currency;
     private Date date;
+    private String[] name = {"a","b"};
+    private double[] value = {1.1,2.2};
     
     /**
      * Creates new form Build_GUI
@@ -56,10 +58,10 @@ public class Build_GUI extends javax.swing.JFrame {
         lblweek = new javax.swing.JLabel();
         pother = new javax.swing.JPanel();
         pchart = new javax.swing.JPanel();
-        btLogout = new javax.swing.JButton();
         ptoday = new javax.swing.JLabel();
         btadd = new javax.swing.JButton();
         pthismonth = new javax.swing.JLabel();
+        btLogout = new javax.swing.JButton();
         btCheckingAccount = new javax.swing.JButton();
         btInvestment = new javax.swing.JButton();
 
@@ -104,13 +106,13 @@ public class Build_GUI extends javax.swing.JFrame {
         ptime.setLayout(ptimeLayout);
         ptimeLayout.setHorizontalGroup(
             ptimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ptimeLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ptimeLayout.createSequentialGroup()
+                .addContainerGap(84, Short.MAX_VALUE)
                 .addGroup(ptimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblmonth, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblday, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                    .addComponent(lblweek, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(lblweek)
+                    .addComponent(lblday)
+                    .addComponent(lblmonth))
+                .addGap(39, 39, 39))
         );
         ptimeLayout.setVerticalGroup(
             ptimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,32 +121,23 @@ public class Build_GUI extends javax.swing.JFrame {
                 .addComponent(lblmonth, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblday, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(lblweek, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(29, 29, 29))
         );
 
-        btLogout.setText("Log out");
-        btLogout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btLogoutActionPerformed(evt);
-            }
-        });
+        Part3.DrawBarChart barChart = new Part3.DrawBarChart(value, name, "t");
+        pchart.add(barChart);
 
         javax.swing.GroupLayout pchartLayout = new javax.swing.GroupLayout(pchart);
         pchart.setLayout(pchartLayout);
         pchartLayout.setHorizontalGroup(
             pchartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pchartLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(0, 325, Short.MAX_VALUE)
         );
         pchartLayout.setVerticalGroup(
             pchartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pchartLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(195, Short.MAX_VALUE))
+            .addGap(0, 174, Short.MAX_VALUE)
         );
 
         conn = MySqlConnect.ConnectDB();
@@ -190,23 +183,37 @@ public class Build_GUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,e);
         }
 
+        btLogout.setText("Log out");
+        btLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLogoutActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout potherLayout = new javax.swing.GroupLayout(pother);
         pother.setLayout(potherLayout);
         potherLayout.setHorizontalGroup(
             potherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ptoday, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(potherLayout.createSequentialGroup()
-                .addComponent(pchart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addComponent(pthismonth, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+                .addGroup(potherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pchart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 29, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, potherLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btadd, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64))
+                .addGroup(potherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pthismonth, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, potherLayout.createSequentialGroup()
+                        .addComponent(btadd, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64))
+                    .addComponent(ptoday, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         potherLayout.setVerticalGroup(
             potherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(potherLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(btLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(pchart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ptoday, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)

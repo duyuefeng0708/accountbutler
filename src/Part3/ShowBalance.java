@@ -54,7 +54,7 @@ public class ShowBalance {
 				totalExpenseByMonth+=e.getAmount();				
 		}
 		return totalExpenseByMonth;
-	}*/
+	}
 	
 	public void showMonthlyBalanceChart(String[] argv) {
 	    JFrame f = new JFrame();
@@ -72,5 +72,5 @@ public class ShowBalance {
 	    };
 	    f.addWindowListener(wndCloser);
 	    f.setVisible(true);
-	  }
+	  }*/
 }
