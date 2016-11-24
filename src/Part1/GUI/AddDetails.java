@@ -253,7 +253,7 @@ public class AddDetails extends javax.swing.JFrame {
             expenseType = comboexpensetype.getSelectedItem().toString();
         if(!jLabelExpenseType.isShowing())
             expenseType = "Surplus";     
-        String SqlInsert = "INSERT INTO [Record] VALUES(NEWID(), '"+UserName.getUserName()+"',"+income+",'"+assetType+"','"+location+"',"+amount+",'"+comment+"',GETDATE(),'"+expenseType+"');";
+        String SqlInsert = "INSERT INTO [Record] VALUES(NEWID(), '"+UserName.getUserName()+"',"+income+",'"+assetType+"','"+location+"',"+amount+",'"+comment+"',cast(GETDATE() as DATE),'"+expenseType+"');";
         try {
             conn = MySqlConnect.ConnectDB();
             stInsert = conn.createStatement();

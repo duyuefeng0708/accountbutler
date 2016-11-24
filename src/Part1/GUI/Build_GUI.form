@@ -237,8 +237,14 @@
         </Container>
         <Component class="javax.swing.JLabel" name="ptoday">
           <Properties>
-            <Property name="text" type="java.lang.String" value=" Today         I spend    $"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;Today I spent $ 0&quot;" type="code"/>
+            </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="}&#xa;        }catch(Exception e){&#xa;            JOptionPane.showMessageDialog(null,e);&#xa;        }"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="conn = MySqlConnect.ConnectDB();&#xa;        String todaySql = &quot;Select Sum(Amount) from [Record] where UserName = ? and Income = 0 and Date = cast(GETDATE() as date) &quot;;&#xa;        try{&#xa;            pst = conn.prepareStatement(todaySql);&#xa;            pst.setString(1,UserName.getUserName());&#xa;            rs = pst.executeQuery();&#xa;            if(rs.next()){&#xa;                if(rs.getString(1)==null){&#xa;                    ptoday.setText(&quot;Today I spent $ 0&quot;);&#xa;                }&#xa;                ptoday.setText(&quot;Today I spent $ &quot;+ Round.round(rs.getFloat(1),2));&#xa;            }&#xa;            else{"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="btadd">
           <Properties>
@@ -250,8 +256,14 @@
         </Component>
         <Component class="javax.swing.JLabel" name="pthismonth">
           <Properties>
-            <Property name="text" type="java.lang.String" value="This month   I spend    $"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;This month I spent $ 0&quot;" type="code"/>
+            </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="}&#xa;        }catch(Exception e){&#xa;            JOptionPane.showMessageDialog(null,e);&#xa;        }"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String monthSql = &quot;Select Sum(Amount) from [Record] where UserName = &apos;&quot;+ UserName.getUserName() +&quot;&apos; and Income = 0 and MONTH(Date) = MONTH(GETDATE()) &quot;;&#xa;        try{&#xa;            st = conn.createStatement();&#xa;            rs = st.executeQuery(monthSql);&#xa;            if(rs.next()){&#xa;                if(rs.getString(1)==null){&#xa;                    pthismonth.setText(&quot;This month I spent $ 0&quot;);&#xa;                }&#xa;                pthismonth.setText(&quot;This month I spent $ &quot;+ Round.round(rs.getFloat(1),2));&#xa;            }&#xa;            else{"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

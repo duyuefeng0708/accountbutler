@@ -7,13 +7,22 @@ package Part1.GUI;
 import Part1.Currency;
 import Part2.*;
 import Part3.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.*;
 import java.text.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author youhan
  */
 public class Build_GUI extends javax.swing.JFrame {
+    Connection conn = null;
+    PreparedStatement pst = null;
+    Statement st = null;
+    ResultSet rs = null;
     //This is the different sub-types of Budget, can be defined by users
     private ArrayList<String> budget_types;
     private Currency currency;
@@ -138,7 +147,24 @@ public class Build_GUI extends javax.swing.JFrame {
                 .addContainerGap(195, Short.MAX_VALUE))
         );
 
-        ptoday.setText(" Today         I spend    $");
+        conn = MySqlConnect.ConnectDB();
+        String todaySql = "Select Sum(Amount) from [Record] where UserName = ? and Income = 0 and Date = cast(GETDATE() as date) ";
+        try{
+            pst = conn.prepareStatement(todaySql);
+            pst.setString(1,UserName.getUserName());
+            rs = pst.executeQuery();
+            if(rs.next()){
+                if(rs.getString(1)==null){
+                    ptoday.setText("Today I spent $ 0");
+                }
+                ptoday.setText("Today I spent $ "+ Round.round(rs.getFloat(1),2));
+            }
+            else{
+                ptoday.setText("Today I spent $ 0");
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,e);
+        }
 
         btadd.setText("Add");
         btadd.addActionListener(new java.awt.event.ActionListener() {
@@ -147,7 +173,22 @@ public class Build_GUI extends javax.swing.JFrame {
             }
         });
 
-        pthismonth.setText("This month   I spend    $");
+        String monthSql = "Select Sum(Amount) from [Record] where UserName = '"+ UserName.getUserName() +"' and Income = 0 and MONTH(Date) = MONTH(GETDATE()) ";
+        try{
+            st = conn.createStatement();
+            rs = st.executeQuery(monthSql);
+            if(rs.next()){
+                if(rs.getString(1)==null){
+                    pthismonth.setText("This month I spent $ 0");
+                }
+                pthismonth.setText("This month I spent $ "+ Round.round(rs.getFloat(1),2));
+            }
+            else{
+                pthismonth.setText("This month I spent $ 0");
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,e);
+        }
 
         javax.swing.GroupLayout potherLayout = new javax.swing.GroupLayout(pother);
         pother.setLayout(potherLayout);
