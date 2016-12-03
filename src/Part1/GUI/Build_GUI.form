@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="resizable" type="boolean" value="false"/>
@@ -174,31 +174,25 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="pchart" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="185" max="-2" attributes="0"/>
+                  <Component id="btLogout" min="-2" pref="152" max="-2" attributes="0"/>
+                  <EmptySpace pref="23" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="btadd" min="-2" pref="169" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="pthismonth" alignment="1" pref="264" max="32767" attributes="0"/>
-                      <Component id="ptoday" alignment="1" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="lblWarning" alignment="1" min="-2" pref="265" max="-2" attributes="0"/>
+                      <Component id="lblmonthestimate" alignment="1" min="-2" pref="265" max="-2" attributes="0"/>
+                      <Component id="pthismonth" min="-2" pref="264" max="-2" attributes="0"/>
+                      <Component id="ptoday" min="-2" pref="264" max="-2" attributes="0"/>
                   </Group>
-              </Group>
-              <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btadd" min="-2" pref="163" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="creditCard" min="-2" pref="155" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="185" max="-2" attributes="0"/>
-                          <Component id="btLogout" min="-2" pref="152" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -207,42 +201,22 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                   <Component id="btLogout" max="32767" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="pchart" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                   <Component id="ptoday" min="-2" pref="51" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="pthismonth" min="-2" pref="49" max="-2" attributes="0"/>
-                  <EmptySpace pref="32" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btadd" pref="40" max="32767" attributes="0"/>
-                      <Component id="creditCard" max="32767" attributes="0"/>
-                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="lblmonthestimate" min="-2" pref="43" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="lblWarning" min="-2" pref="48" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="btadd" min="-2" pref="53" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="pchart">
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel()"/>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Part3.DrawBarChart barChart = new Part3.DrawBarChart(value, name, &quot;t&quot;);&#xa;pchart.add(barChart);"/>
-          </AuxValues>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="325" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="174" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-        </Container>
         <Component class="javax.swing.JLabel" name="ptoday">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -265,12 +239,12 @@
         <Component class="javax.swing.JLabel" name="pthismonth">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="&quot;This month I spent $ 0&quot;" type="code"/>
+              <Connection code="&quot;This month I spent $ 0.00&quot;" type="code"/>
             </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="}&#xa;        }catch(Exception e){&#xa;            JOptionPane.showMessageDialog(null,e);&#xa;        }"/>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String monthSql = &quot;Select Sum(Amount) from [Record] where UserName = &apos;&quot;+ UserName.getUserName() +&quot;&apos; and Income = 0 and MONTH(Date) = MONTH(GETDATE()) &quot;;&#xa;        try{&#xa;            st = conn.createStatement();&#xa;            rs = st.executeQuery(monthSql);&#xa;            if(rs.next()){&#xa;                if(rs.getString(1)==null){&#xa;                    pthismonth.setText(&quot;This month I spent $ 0&quot;);&#xa;                }&#xa;                pthismonth.setText(&quot;This month I spent $ &quot;+ Round.round(rs.getFloat(1),2));&#xa;            }&#xa;            else{"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String monthSql = &quot;Select Sum(Amount) from [Record] where UserName = &apos;&quot;+ UserName.getUserName() +&quot;&apos; and Income = 0 and MONTH(Date) = MONTH(GETDATE()) &quot;;&#xa;        try{&#xa;            st = conn.createStatement();&#xa;            rs = st.executeQuery(monthSql);&#xa;            if(rs.next()){&#xa;                if(rs.getString(1)==null){   &#xa;                    monthSpent=0.00f;&#xa;                    pthismonth.setText(&quot;This month I spent $ 0.00&quot;);&#xa;                }&#xa;                else{&#xa;                    monthSpent = Round.round(rs.getFloat(1),2);&#xa;                    pthismonth.setText(&quot;This month I spent $ &quot;+ monthSpent);&#xa;                }&#xa;            }&#xa;            else{&#xa;            monthSpent=0.00f;"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="btLogout">
@@ -281,13 +255,20 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btLogoutActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="creditCard">
+        <Component class="javax.swing.JLabel" name="lblmonthestimate">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Set Credit Card"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;Estimated cost this month: &quot;+monthEstimate" type="code"/>
+            </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="creditCardActionPerformed"/>
-          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="float monthEstimate = monthSpent*30/cal.get(cal.DATE);"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblWarning">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="String TotalBudgetsql = &quot;Select * from [Budget] where UserName = ? And BudgetYear = ? And BudgetMonth = ? &quot;;&#xa;        try{&#xa;            float monthBudget;&#xa;            int monthindex = cal.get(cal.MONTH)+1;&#xa;            PreparedStatement pst;&#xa;            pst = conn.prepareStatement(TotalBudgetsql);&#xa;            pst.setString(1,UserName.getUserName());&#xa;            pst.setString(2,cal.get(cal.YEAR)+&quot;&quot;);&#xa;            pst.setString(3,monthindex+&quot;&quot;);&#xa;            rs = pst.executeQuery();&#xa;            if(rs.next()){&#xa;                    monthBudget = rs.getFloat(3);&#xa;            }&#xa;            else{monthBudget = 0.00f;}&#xa;            if(monthSpent&gt;monthBudget)&#xa;                lblWarning.setText(&quot;If you spend money at this speed, you will exceed the budget!&quot;);&#xa;        }catch(Exception e){&#xa;            JOptionPane.showMessageDialog(null,e);&#xa;        }"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

@@ -17,6 +17,7 @@ import java.text.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import java.util.Calendar;
 /**
  *
  * @author youhan
@@ -30,9 +31,8 @@ public class Build_GUI extends javax.swing.JFrame {
     private ArrayList<String> budget_types;
     private Currency currency;
     private Date date;
-    private String[] name = {"a","b"};
-    private double[] value = {1.1,2.2};
-    
+    private float monthSpent;
+    private Calendar cal = Calendar.getInstance();
     /**
      * Creates new form Build_GUI
      */
@@ -60,12 +60,12 @@ public class Build_GUI extends javax.swing.JFrame {
         lblday = new javax.swing.JLabel();
         lblweek = new javax.swing.JLabel();
         pother = new javax.swing.JPanel();
-        pchart = new javax.swing.JPanel();
         ptoday = new javax.swing.JLabel();
         btadd = new javax.swing.JButton();
         pthismonth = new javax.swing.JLabel();
         btLogout = new javax.swing.JButton();
-        creditCard = new javax.swing.JButton();
+        lblmonthestimate = new javax.swing.JLabel();
+        lblWarning = new javax.swing.JLabel();
         btCheckingAccount = new javax.swing.JButton();
         btInvestment = new javax.swing.JButton();
 
@@ -130,20 +130,6 @@ public class Build_GUI extends javax.swing.JFrame {
                 .addGap(29, 29, 29))
         );
 
-        Part3.DrawBarChart barChart = new Part3.DrawBarChart(value, name, "t");
-        pchart.add(barChart);
-
-        javax.swing.GroupLayout pchartLayout = new javax.swing.GroupLayout(pchart);
-        pchart.setLayout(pchartLayout);
-        pchartLayout.setHorizontalGroup(
-            pchartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 325, Short.MAX_VALUE)
-        );
-        pchartLayout.setVerticalGroup(
-            pchartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 174, Short.MAX_VALUE)
-        );
-
         conn = MySqlConnect.ConnectDB();
         String todaySql = "Select Sum(Amount) from [Record] where UserName = ? and Income = 0 and Date = cast(GETDATE() as date) ";
         try{
@@ -176,12 +162,17 @@ public class Build_GUI extends javax.swing.JFrame {
             rs = st.executeQuery(monthSql);
             if(rs.next()){
                 if(rs.getString(1)==null){
-                    pthismonth.setText("This month I spent $ 0");
+                    monthSpent=0.00f;
+                    pthismonth.setText("This month I spent $ 0.00");
                 }
-                pthismonth.setText("This month I spent $ "+ Round.round(rs.getFloat(1),2));
+                else{
+                    monthSpent = Round.round(rs.getFloat(1),2);
+                    pthismonth.setText("This month I spent $ "+ monthSpent);
+                }
             }
             else{
-                pthismonth.setText("This month I spent $ 0");
+                monthSpent=0.00f;
+                pthismonth.setText("This month I spent $ 0.00");
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,e);
@@ -194,54 +185,67 @@ public class Build_GUI extends javax.swing.JFrame {
             }
         });
 
-        creditCard.setText("Set Credit Card");
-        creditCard.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                creditCardActionPerformed(evt);
-            }
-        });
+        float monthEstimate = monthSpent*30/cal.get(cal.DATE);
+        lblmonthestimate.setText("Estimated cost this month: "+monthEstimate);
 
         javax.swing.GroupLayout potherLayout = new javax.swing.GroupLayout(pother);
         pother.setLayout(potherLayout);
         potherLayout.setHorizontalGroup(
             potherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(potherLayout.createSequentialGroup()
-                .addComponent(pchart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(185, 185, 185)
+                .addComponent(btLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, potherLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btadd, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(88, 88, 88))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, potherLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(potherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pthismonth, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
-                    .addComponent(ptoday, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-            .addGroup(potherLayout.createSequentialGroup()
-                .addGroup(potherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(potherLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btadd, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(creditCard, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(potherLayout.createSequentialGroup()
-                        .addGap(185, 185, 185)
-                        .addComponent(btLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(potherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblWarning, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblmonthestimate, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pthismonth, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ptoday, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38))
         );
         potherLayout.setVerticalGroup(
             potherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(potherLayout.createSequentialGroup()
                 .addGap(8, 8, 8)
                 .addComponent(btLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(pchart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(45, 45, 45)
                 .addComponent(ptoday, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pthismonth, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addGroup(potherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btadd, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addComponent(creditCard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(lblmonthestimate, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblWarning, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(btadd, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        String TotalBudgetsql = "Select * from [Budget] where UserName = ? And BudgetYear = ? And BudgetMonth = ? ";
+        try{
+            float monthBudget;
+            int monthindex = cal.get(cal.MONTH)+1;
+            PreparedStatement pst;
+            pst = conn.prepareStatement(TotalBudgetsql);
+            pst.setString(1,UserName.getUserName());
+            pst.setString(2,cal.get(cal.YEAR)+"");
+            pst.setString(3,monthindex+"");
+            rs = pst.executeQuery();
+            if(rs.next()){
+                monthBudget = rs.getFloat(3);
+            }
+            else{monthBudget = 0.00f;}
+            if(monthSpent>monthBudget)
+            lblWarning.setText("If you spend money at this speed, you will exceed the budget!");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,e);
+        }
 
         btCheckingAccount.setText("Checking Account");
         btCheckingAccount.addActionListener(new java.awt.event.ActionListener() {
@@ -373,13 +377,6 @@ public class Build_GUI extends javax.swing.JFrame {
         login.setVisible(true);
     }//GEN-LAST:event_btLogoutActionPerformed
 
-    private void creditCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditCardActionPerformed
-        CreditCardUI credit = new CreditCardUI();
-        credit.setVisible(true);
-        this.dispose();
-        credit.setVisible(true);
-    }//GEN-LAST:event_creditCardActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -424,11 +421,11 @@ public class Build_GUI extends javax.swing.JFrame {
     private javax.swing.JButton btSavings;
     private javax.swing.JButton btadd;
     private javax.swing.JButton btbudget;
-    private javax.swing.JButton creditCard;
+    private javax.swing.JLabel lblWarning;
     private javax.swing.JLabel lblday;
     private javax.swing.JLabel lblmonth;
+    private javax.swing.JLabel lblmonthestimate;
     private javax.swing.JLabel lblweek;
-    private javax.swing.JPanel pchart;
     private javax.swing.JPanel pother;
     private javax.swing.JLabel pthismonth;
     private javax.swing.JPanel ptime;

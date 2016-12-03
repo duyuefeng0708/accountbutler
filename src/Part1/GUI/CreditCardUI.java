@@ -421,9 +421,10 @@ public class CreditCardUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        AssetType.setAssetType("Credit Card");
+        Asset asset = new Asset();
+        asset.setVisible(true);
         this.dispose();
-        Build_GUI b_gui = new Build_GUI();
-        b_gui.setVisible(true);
     }//GEN-LAST:event_backActionPerformed
 
     /**
