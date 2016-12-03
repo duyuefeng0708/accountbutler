@@ -6,6 +6,8 @@
 package Part1;
 
 import Part2.Expense;
+
+import java.math.BigInteger;
 import java.util.*;
 
 /**
@@ -42,7 +44,7 @@ public class CreditCard {
     //card type, "Visa" for example, will be passed from GUI side
     private String type;
     
-    private int cardNumber;
+    private String cardNumber;
     
     private String cardName;
     
@@ -53,8 +55,10 @@ public class CreditCard {
     public float getLimit(){return limit;}
     public float getSingle(){return singleLimit;}
     public float getBalance(){return balance;}
+    public String getType(){return type;}
+    public String getName(){return cardName;}
             
-    public CreditCard(int endDate, int payDate, float limit, float single, String type, float balance, int cardN, String name){
+    public CreditCard(int endDate, int payDate, float limit, float single, String type, float balance, String cardN, String name){
         this.endDate=endDate;
         this.payDate=payDate;
         this.limit=limit;
@@ -63,65 +67,61 @@ public class CreditCard {
         this.balance=balance;
         this.cardNumber=cardN;
         this.cardName=name;
+        unPaidExpenses=new ArrayList<>();
     }
     
-    public static String validate(int endDate, int payDate, float limit, float single, String type, float balance, int cardN){
-        if (type.equals("VISA")){
-            if (((Math.floor(Math.log10(cardN) + 1))==16 || (Math.floor(Math.log10(cardN) + 1))==13) 
-                    && Integer.parseInt(Integer.toString(cardN).substring(0, 1))==4){
-                if (0<payDate && payDate <=28)
-                    return "wrong pay date";
-                if (0<endDate && endDate<=28)
-                    return "wrong end date";
-                if (single>limit)
-                    return "single paymeny limit cannot be higher than period limit";
-                if (limit<balance)
-                    return "balance shouldn't be larger than limit";
+    public static String validate(int endDate, int payDate, float limit, float single, String type, float balance, String cardN){
+        int length=cardN.length();
+        String char1=cardN.substring(0, 1);
+        String char2=cardN.substring(1, 2);
+    	if (type.equals("VISA")){
+            if (( length==16 || length==13) && char1.equals("4")){
+            	
+            	if (!validateDate(endDate, payDate, limit, single, balance).equals("true"))
+            		return validateDate(endDate, payDate, limit, single, balance);
+            	
                 return "Valid VISA card";
             }else
                 return "Invalid VISA card number";
             
         }else if (type.equals("Master")){
-            if ((Math.floor(Math.log10(cardN) + 1))==16 
-                    && Integer.parseInt(Integer.toString(cardN).substring(0, 1))==5
-                    && 1<=Integer.parseInt(Integer.toString(cardN).substring(1, 2))
-                    && 5>=Integer.parseInt(Integer.toString(cardN).substring(1, 2))){
-                if (0<payDate && payDate <=28)
-                    return "wrong pay date";
-                if (0<endDate && endDate<=28)
-                    return "wrong end date";
-                if (single>limit)
-                    return "single paymeny limit cannot be higher than period limit";
-                if (limit<balance)
-                    return "balance shouldn't be larger than limit";
+            if (length==16 && Integer.parseInt(char1)==5
+                    && 1<=Integer.parseInt(char2) && 5>=Integer.parseInt(char2)){
+            	
+            	if (!validateDate(endDate, payDate, limit, single, balance).equals("true"))
+            		return validateDate(endDate, payDate, limit, single, balance);
+            	
                 return "Valid Master card";
             }else
                 return "Invalid Master card number";
 
         }else if (type.equals("American Express")){
-            if ((Math.floor(Math.log10(cardN) + 1))==15
-                    && Integer.parseInt(Integer.toString(cardN).substring(0, 1))==3
-                    && (Integer.parseInt(Integer.toString(cardN).substring(1, 2))==4
-                    || Integer.parseInt(Integer.toString(cardN).substring(1, 2))==7)){
-                if (0<payDate && payDate <=28)
-                    return "wrong pay date";
-                if (0<endDate && endDate<=28)
-                    return "wrong end date";
-                if (single>limit)
-                    return "single paymeny limit cannot be higher than period limit";
-                if (limit<balance)
-                    return "balance shouldn't be larger than limit";
-                return "Valid American Express card";
-                
+            if (length==15&& Integer.parseInt(char1)==3
+                    && (Integer.parseInt(char2)==4|| Integer.parseInt(char2)==7)){
+            
+            	if (!validateDate(endDate, payDate, limit, single, balance).equals("true"))
+            		return validateDate(endDate, payDate, limit, single, balance);
+            	
+                return "Valid American Express card";               
             }else
                 return "Invalid American Express number";
-                    
         }else
             return "Please choose right card type";
     }
     
+    public static String validateDate(int endDate, int payDate, float limit, float single, float balance){
+    	if (!(0<payDate && payDate <=28))
+            return "wrong pay date";
+        if (!(0<endDate && endDate<=28))
+            return "wrong end date";
+        if (single>limit)
+            return "single payment limit cannot be higher than period limit";
+        if (limit<balance)
+            return "balance shouldn't be larger than limit";
+        return "true";
+    }
     public String addPayment(float payment){
-        if (payment>=singleLimit)
+        if (payment>singleLimit)
             return "Payment Larger than limit!";
         else if (payment+balance>limit)
             return "Exceed month limit!";
@@ -129,22 +129,25 @@ public class CreditCard {
             return "Added!";
     }
     
-    public void addNewExpense(Expense e){
+   /* public boolean addMount(float amount){
+        balance+=amount;
+        return true;
+    }*/
+    public boolean addNewExpense(Expense e){
         if (balance+e.getAmount()<=limit){
             unPaidExpenses.add(e);
             balance+=e.getAmount();
-        }else
-            reachLimit();
+            return true;
+        }
+        return false;
     }
     
-    public void reachLimit(){
-        //to handle and output message in GUI
-    }
     //move to New period
-    public void moveToNew(){
+    public boolean moveToNew(){
         Expense expense=new Expense();
-        associatedAccount.applyExchange(expense);
-        balance=0;
+        //associatedAccount.applyExchange(expense);
+        //balance=0;
+        return true;
     }
     
 }

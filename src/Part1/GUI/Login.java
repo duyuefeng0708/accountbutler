@@ -133,7 +133,7 @@ ResultSet rs = null;
 
     private void btSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSignupActionPerformed
         Register register = new Register();
-        this.setVisible(false);
+        this.dispose();
         register.setVisible(true);
     }//GEN-LAST:event_btSignupActionPerformed
 
@@ -149,7 +149,7 @@ ResultSet rs = null;
                 //JOptionPane.showMessageDialog(null, "Welcome!");
                 UserName.setUserName(txtUserName.getText());                    
                 Build_GUI mainframe = new Build_GUI();
-                this.setVisible(false);
+                this.dispose();
                 mainframe.setVisible(true);
             }
             else{

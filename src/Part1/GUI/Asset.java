@@ -199,7 +199,7 @@ ResultSet rs = null;
 //                                    if(incomeString.equals("Expense"))
 //                                        comboBoxExpenseType.removeItemAt(0);;
                                     String location = (String)model.getValueAt(row, 4);
-                                    float amount = Float.parseFloat(model.getValueAt(row, 5).toString());
+                                    double amount = (double)model.getValueAt(row, 5);
                                     String comment = (String)model.getValueAt(row, 6);
                                     String date = model.getValueAt(row, 7).toString();
                                     String expenseType = (String)model.getValueAt(row,8);
@@ -339,7 +339,7 @@ ResultSet rs = null;
 
     private void btBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBackActionPerformed
         Build_GUI mainframe = new Build_GUI();
-        this.setVisible(false);
+        this.dispose();
         mainframe.setVisible(true); 
     }//GEN-LAST:event_btBackActionPerformed
 
@@ -371,7 +371,7 @@ ResultSet rs = null;
             }
         }        
         Asset newAsset = new Asset();
-        this.setVisible(false);
+        this.dispose();
         newAsset.setVisible(true);
     }//GEN-LAST:event_btDeleteActionPerformed
 

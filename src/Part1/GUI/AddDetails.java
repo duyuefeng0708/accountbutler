@@ -262,7 +262,7 @@ public class AddDetails extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "New record saved!");
             }    
             Build_GUI mainframe = new Build_GUI();
-            this.setVisible(false);
+            this.dispose();
             mainframe.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(AddDetails.class.getName()).log(Level.SEVERE, null, ex);
@@ -271,7 +271,7 @@ public class AddDetails extends javax.swing.JFrame {
 
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
         Build_GUI mainframe = new Build_GUI();
-        this.setVisible(false);
+        this.dispose();
         mainframe.setVisible(true);
     }//GEN-LAST:event_jButtonCancelActionPerformed
 

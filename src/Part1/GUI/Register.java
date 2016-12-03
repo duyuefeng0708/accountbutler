@@ -174,7 +174,7 @@ public class Register extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "New user registered!");
                     }                   
                     Login login = new Login();
-                    this.setVisible(false);
+                    this.dispose();
                     login.setVisible(true);
                 }
             }catch(Exception e){
@@ -187,7 +187,7 @@ public class Register extends javax.swing.JFrame {
 
     private void btBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBackActionPerformed
         Login login = new Login();
-        this.setVisible(false);
+        this.dispose();
         login.setVisible(true);
     }//GEN-LAST:event_btBackActionPerformed
 
