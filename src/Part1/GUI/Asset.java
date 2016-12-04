@@ -199,7 +199,7 @@ ResultSet rs = null;
 //                                    if(incomeString.equals("Expense"))
 //                                        comboBoxExpenseType.removeItemAt(0);;
                                     String location = (String)model.getValueAt(row, 4);
-                                    double amount = (double)model.getValueAt(row, 5);
+                                    double amount = Double.parseDouble(model.getValueAt(row, 5).toString());
                                     String comment = (String)model.getValueAt(row, 6);
                                     String date = model.getValueAt(row, 7).toString();
                                     String expenseType = (String)model.getValueAt(row,8);
