@@ -184,16 +184,10 @@
                   <Component id="btadd" min="-2" pref="169" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
               </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="lblWarning" alignment="1" min="-2" pref="265" max="-2" attributes="0"/>
-                      <Component id="lblmonthestimate" alignment="1" min="-2" pref="265" max="-2" attributes="0"/>
-                      <Component id="pthismonth" min="-2" pref="264" max="-2" attributes="0"/>
-                      <Component id="ptoday" min="-2" pref="264" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-              </Group>
+              <Component id="lblmonthestimate" alignment="1" max="32767" attributes="0"/>
+              <Component id="lblWarning" alignment="0" max="32767" attributes="0"/>
+              <Component id="pthismonth" alignment="0" max="32767" attributes="0"/>
+              <Component id="ptoday" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -267,7 +261,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblWarning">
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="String TotalBudgetsql = &quot;Select * from [Budget] where UserName = ? And BudgetYear = ? And BudgetMonth = ? &quot;;&#xa;        try{&#xa;            float monthBudget;&#xa;            int monthindex = cal.get(cal.MONTH)+1;&#xa;            PreparedStatement pst;&#xa;            pst = conn.prepareStatement(TotalBudgetsql);&#xa;            pst.setString(1,UserName.getUserName());&#xa;            pst.setString(2,cal.get(cal.YEAR)+&quot;&quot;);&#xa;            pst.setString(3,monthindex+&quot;&quot;);&#xa;            rs = pst.executeQuery();&#xa;            if(rs.next()){&#xa;                    monthBudget = rs.getFloat(3);&#xa;            }&#xa;            else{monthBudget = 0.00f;}&#xa;            if(monthSpent&gt;monthBudget)&#xa;                lblWarning.setText(&quot;If you spend money at this speed, you will exceed the budget!&quot;);&#xa;        }catch(Exception e){&#xa;            JOptionPane.showMessageDialog(null,e);&#xa;        }"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="String TotalBudgetsql = &quot;Select * from [Budget] where UserName = ? And BudgetYear = ? And BudgetMonth = ? &quot;;&#xa;        try{&#xa;            float monthBudget;&#xa;            int monthindex = cal.get(cal.MONTH)+1;&#xa;            PreparedStatement pst;&#xa;            pst = conn.prepareStatement(TotalBudgetsql);&#xa;            pst.setString(1,UserName.getUserName());&#xa;            pst.setString(2,cal.get(cal.YEAR)+&quot;&quot;);&#xa;            pst.setString(3,monthindex+&quot;&quot;);&#xa;            rs = pst.executeQuery();&#xa;            if(rs.next()){&#xa;                    monthBudget = rs.getFloat(3);&#xa;            }&#xa;            else{monthBudget = 0.00f;}&#xa;            if(monthEstimate&gt;monthBudget)&#xa;                lblWarning.setText(&quot;If you spend money at this speed, you will exceed the budget!&quot;);&#xa;        }catch(Exception e){&#xa;            JOptionPane.showMessageDialog(null,e);&#xa;        }"/>
           </AuxValues>
         </Component>
       </SubComponents>
